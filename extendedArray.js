@@ -141,3 +141,43 @@ Array.prototype.median = function(idxLeft, idxRight, asIndex)
     else
         return asIndex ? idxRight : this[idxRight];
 }
+
+/**
+ * Sorting algorithms
+ **/
+
+/**
+ * @brief
+ * partition the array between idxLeft and idxRight so that
+ * all the values smaller than the pivot value are placed to its
+ * left and all bigger values are placed to its right.
+ *
+ * @param   idxLeft     integer     start partition pos
+ * @param   idxRight    integer     end partition pos
+ * @param   idxPivot    integer     pivot position
+ *
+ * @return integer final pivot position
+ **/
+Array.prototype.partition = function(idxLeft, idxRight, idxPivot)
+{
+    if (isNaN(idxLeft) || isNaN[idxRight] || isNaN[idxPivot]
+        || this[idxPivot] == null || this[idxLeft] == null || this[idxRight] == null)
+        return this;
+
+    var pivotVal = this[idxPivot];
+    var storeIdx = idxLeft;
+
+    // swap pivot & right, set to the end
+    this.swap(idxPivot, idxRight-1);
+
+    for (var i = idxLeft; i < idxRight-1; ++i) {
+        if (this[i] <= pivotVal) {
+            this.swap(storeIdx, i);
+            ++storeIdx;
+        }
+    }
+
+    // move pivot to its final place
+    this.swap(idxRight-1, storeIdx);
+    return storeIdx;
+}
