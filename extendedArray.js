@@ -85,3 +85,59 @@ Array.prototype.merge = function()
 
     return merged;
 }
+
+Array.prototype.swap = function(idx1, idx2)
+{
+    var swap = this[idx1];
+    this[idx1] = this[idx2];
+    this[idx2] = swap;
+}
+
+/**
+ * Mathematical functions
+ **/
+
+Array.prototype.sum = function()
+{
+    if (arguments.length)
+    // merge all arguments array to 'this'
+        for (ix in arguments)
+            this = this.merge(arguments[ix]);
+
+    var sum = 0;
+    for (var i = 0, m = this.length; i < m; i++)
+        if (! isNaN(this[i]))
+            sum += this[i];
+
+    return sum;
+}
+
+Array.prototype.avg = function()
+{
+    if (arguments.length)
+    // merge all arguments array to 'this'
+        for (ix in arguments)
+            this = this.merge(arguments[ix]);
+
+    return this.sum() / this.length;
+}
+
+Array.prototype.median = function(idxLeft, idxRight, asIndex)
+{
+    var mid = Math.round(idxRight / 2);
+
+    if (this[idxLeft] >= this[idxRight]) {
+        if (this[idxLeft] < this[mid])
+            return asIndex ? idxLeft : this[idxLeft];
+        else
+            return asIndex ? mid : this[mid];
+    }
+    else if (this[idxRight] >= this[mid]) {
+        if (this[idxLeft] >= this[mid])
+            return asIndex ? idxLeft : this[idxLeft];
+        else
+            return asIndex ? mid : this[mid];
+    }
+    else
+        return asIndex ? idxRight : this[idxRight];
+}
