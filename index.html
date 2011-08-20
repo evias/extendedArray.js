@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>extendedArray.js by Greg Saive</title>
+    <script type="text/javascript" src="extendedArray.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var fstArray = new Array();
+        var sndArray = new Array();
+        var trdArray = new Array();
+
+        fstArray.push(1);
+        fstArray.push(4);
+        fstArray.push(6);
+        fstArray.push(88);
+        fstArray.push(8);
+        fstArray.push(29);
+
+        sndArray.push(1);
+        sndArray.push(7);
+        sndArray.push(4);
+
+        trdArray.push(88);
+        trdArray.push(29);
+
+        var intersect  = fstArray.intersect(sndArray, trdArray);
+        console.log("intersection: ", intersect);
+
+        var difference = fstArray.difference(trdArray, sndArray);
+        console.log("difference: ", difference);
+
+        var merged      = trdArray.merge(sndArray);
+        console.log("merge of ", trdArray, " and ", sndArray, " is ", merged);
+    </script>
+    <p><span>Watch your developer console ;)</span></p>
+</body>
