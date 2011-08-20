@@ -8,6 +8,22 @@
  * objects.
  **/
 
+Array.prototype.copy = function()
+{
+    var startIdx = 0;
+    var endIdx   = this.length;
+    if (arguments.length) {
+        var startIdx = arguments[0];
+        var endIdx   = typeof(arguments[1]) != "undefined" ? arguments[1] : this.length;
+    }
+
+    var n = new Array();
+    for (var i = startIdx; i < endIdx; i++)
+        n.push(this[i]);
+
+    return n;
+}
+
 Array.prototype.find = function(value)
 {
     for (var i = 0, m = this.length; i < m; i++)
