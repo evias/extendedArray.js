@@ -5,32 +5,30 @@
 </head>
 <body>
     <script type="text/javascript">
-        var fstArray = new Array();
-        var sndArray = new Array();
-        var trdArray = new Array();
+        var fstArray = new Array(1,4,6,88,8,29);
+        var sndArray = new Array(1,7,4);
+        var trdArray = new Array(88,29);
 
-        fstArray.push(1);
-        fstArray.push(4);
-        fstArray.push(6);
-        fstArray.push(88);
-        fstArray.push(8);
-        fstArray.push(29);
-
-        sndArray.push(1);
-        sndArray.push(7);
-        sndArray.push(4);
-
-        trdArray.push(88);
-        trdArray.push(29);
+        var c1 = fstArray.copy();
+        var c2 = sndArray.copy();
+        var c3 = trdArray.copy();
 
         var intersect  = fstArray.intersect(sndArray, trdArray);
-        console.log("intersection: ", intersect);
+        console.log("intersection of ", fstArray, " and ", c2.copy().merge(trdArray), " is ", intersect);
+        console.log("------------");
 
         var difference = fstArray.difference(trdArray, sndArray);
-        console.log("difference: ", difference);
+        console.log("difference of ", fstArray, " and ", c2.copy().merge(trdArray), " is ", difference);
+        console.log("------------");
 
         var merged      = trdArray.merge(sndArray);
-        console.log("merge of ", trdArray, " and ", sndArray, " is ", merged);
+        console.log("merge of ", c3, " and ", sndArray, " is ", merged);
+        console.log("------------");
+
+        var toSum = new Array(1,1,2,3,5,8,13,21,34,55);
+        var unsummed = toSum.copy();
+        console.log("sum of ", unsummed, " is ", toSum.sum());
+        console.log("------------");
     </script>
     <p><span>Watch your developer console ;)</span></p>
 </body>
