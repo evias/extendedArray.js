@@ -29,6 +29,23 @@
         var unsummed = toSum.copy();
         console.log("sum of ", unsummed, " is ", toSum.sum());
         console.log("------------");
+
+        var toAvg = new Array(1,4,7,8,9,6,7,5,8,9);
+        var unavged = toAvg.copy();
+        console.log("avg of ", unavged, " is ", toAvg.avg());
+        console.log("------------");
+
+        var toMedian = new Array(1,7,4);
+        var unmedianed = toMedian.copy();
+        console.log("median of ", unmedianed, " is ", toMedian.median(0,toMedian.length-1));
+        console.log("------------");
+
+        var toPart = new Array(98, 88, 38, 29, 42, 12, 10, 7, 99);
+        var unparted = toPart.copy();
+        var pivot = 2;
+        toPart.partition(0, toPart.length-1, pivot);
+        console.log("partition of ", unparted, " with pivot ", unparted[pivot], " is ", toPart);
+        console.log("------------");
     </script>
     <p><span>Watch your developer console ;)</span></p>
 </body>
