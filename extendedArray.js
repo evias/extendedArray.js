@@ -181,3 +181,32 @@ Array.prototype.partition = function(idxLeft, idxRight, idxPivot)
     this.swap(idxRight-1, storeIdx);
     return storeIdx;
 }
+
+/**
+ * @brief
+ * bubble sort algorithm implementation. The bubble sort algorithm will 
+ * iterate through the entries and if a left value is bigger than the
+ * right value, they are swapped. This allows putting the biggest value
+ * of the list at the end every loop.
+ *
+ * This implementation partitions the array before executing the bubble
+ * sort as this will decrease the number of loops to execute.
+ **/
+Array.prototype.bubble_sort = function()
+{
+    // partition the array
+    // the pivot is the median of the first, the last and the middle elements
+    var idxPivot = this.median(0, this.length, true);
+    this.partition(0, this.length, idxPivot);
+
+    var swapped = true;
+    while(swapped) {
+        swapped = false;
+        for (var i = 0, m = this.length; i < m; i++) {
+            if (i > 0 && this[i-1] > this[i]) {
+                this.swap(i-1, i);
+                swapped = true;
+            }
+        }
+    }
+}
